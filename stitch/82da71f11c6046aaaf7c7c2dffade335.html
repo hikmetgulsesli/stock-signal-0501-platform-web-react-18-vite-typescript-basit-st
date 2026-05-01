@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>İstatistik Paneli - Hassasiyet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#0c0e16",
+                        "inverse-primary": "#0053db",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#d4e4fa",
+                        "on-tertiary-container": "#ffede6",
+                        "inverse-on-surface": "#2e3039",
+                        "surface-tint": "#b4c5ff",
+                        "outline": "#8d90a0",
+                        "on-secondary-fixed": "#0d1c2d",
+                        "outline-variant": "#434655",
+                        "surface-variant": "#32343d",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-background": "#e1e2ed",
+                        "on-tertiary": "#581e00",
+                        "on-primary-container": "#eeefff",
+                        "background": "#11131b",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-bright": "#373942",
+                        "surface": "#11131b",
+                        "surface-dim": "#11131b",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "tertiary-container": "#bc4800",
+                        "inverse-surface": "#e1e2ed",
+                        "secondary": "#b9c8de",
+                        "primary-container": "#2563eb",
+                        "tertiary": "#ffb596",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-surface": "#e1e2ed",
+                        "on-primary": "#002a78",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "primary": "#b4c5ff",
+                        "surface-container": "#1d1f27",
+                        "primary-fixed": "#dbe1ff",
+                        "on-surface-variant": "#c3c6d7",
+                        "on-secondary-container": "#a7b6cc",
+                        "surface-container-high": "#282a32",
+                        "on-secondary": "#233143",
+                        "secondary-fixed-dim": "#b9c8de",
+                        "surface-container-highest": "#32343d",
+                        "on-primary-fixed": "#00174b",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#39485a",
+                        "secondary-container": "#39485a",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#191b23"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "stack-sm": "8px",
+                        "gutter": "16px",
+                        "stack-md": "16px",
+                        "container-margin": "24px",
+                        "stack-lg": "24px",
+                        "stack-xl": "40px",
+                        "stack-xs": "4px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Inter", "sans-serif"],
+                        "mono-data": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
+                        "body-sm": ["Inter", "sans-serif"],
+                        "display-lg": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "label-caps": ["Inter", "sans-serif"],
+                        "h1": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "h2": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "mono-data": ["14px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h1": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen">
+<!-- JSON Component: SideNavBar -->
+<nav class="fixed left-0 top-0 bottom-0 w-64 z-50 flex flex-col py-6 border-r border-slate-700 bg-slate-800 dark:bg-slate-800 shadow-none hidden md:flex">
+<div class="px-6 mb-8">
+<h1 class="text-xl font-black text-blue-500 font-inter">Hassasiyet</h1>
+<p class="font-inter text-sm antialiased text-slate-400">Kurumsal Takip</p>
+</div>
+<ul class="flex flex-col w-full font-inter text-sm antialiased mt-stack-md">
+<!-- Inactive -->
+<li>
+<a class="text-slate-400 flex items-center px-4 py-3 gap-3 hover:bg-slate-700/50 hover:text-slate-100 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Panel
+                </a>
+</li>
+<!-- Inactive -->
+<li>
+<a class="text-slate-400 flex items-center px-4 py-3 gap-3 hover:bg-slate-700/50 hover:text-slate-100 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                    Stoklar
+                </a>
+</li>
+<!-- Active State -->
+<li>
+<a class="bg-blue-600/10 text-blue-500 border-r-2 border-blue-500 flex items-center px-4 py-3 gap-3 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined fill">insights</span>
+                    İçgörüler
+                </a>
+</li>
+<!-- Inactive -->
+<li>
+<a class="text-slate-400 flex items-center px-4 py-3 gap-3 hover:bg-slate-700/50 hover:text-slate-100 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Ayarlar
+                </a>
+</li>
+<!-- Inactive -->
+<li>
+<a class="text-slate-400 flex items-center px-4 py-3 gap-3 hover:bg-slate-700/50 hover:text-slate-100 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">person</span>
+                    Profil
+                </a>
+</li>
+</ul>
+</nav>
+<!-- JSON Component: TopNavBar -->
+<header class="fixed top-0 right-0 left-0 z-40 flex justify-between items-center px-6 h-16 border-b border-slate-700 bg-slate-800 dark:bg-slate-800/80 shadow-none backdrop-blur-md md:pl-[17rem]">
+<div class="flex items-center gap-gutter">
+<!-- Mobile Menu Toggle (Implied) -->
+<button class="md:hidden text-slate-400 hover:text-slate-50 transition-colors duration-200">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="text-lg font-bold text-slate-50 tracking-tight font-inter">Stok Takip</div>
+</div>
+<div class="flex items-center gap-stack-md text-blue-600 dark:text-blue-500 font-inter text-sm font-medium">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-slate-700/50 hover:text-slate-50 transition-colors duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-slate-700/50 hover:text-slate-50 transition-colors duration-200">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Mobile Bottom NavBar (Generated for responsive pivot as per instructions) -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 flex justify-between items-center bg-surface-container-high border-t border-outline-variant px-6 py-3 md:hidden">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Panel</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-caps text-label-caps">Stoklar</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined fill">insights</span>
+<span class="font-label-caps text-label-caps">İçgörüler</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps">Profil</span>
+</a>
+</nav>
+<!-- Main Canvas -->
+<main class="pt-[5rem] pb-[6rem] md:pb-container-margin md:pl-[17rem] p-container-margin min-h-screen max-w-7xl mx-auto">
+<header class="mb-stack-lg flex flex-col md:flex-row md:justify-between md:items-end gap-stack-md">
+<div>
+<h2 class="font-h1 text-h1 text-on-background">İstatistik Paneli</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-stack-xs">Güncel stok durumu ve operasyonel metrikler.</p>
+</div>
+<div class="flex gap-stack-sm">
+<button class="bg-surface-variant text-on-surface px-4 py-2 rounded border border-outline-variant font-label-caps text-label-caps uppercase hover:bg-surface-container-highest flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    Rapor Al
+                </button>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Highlight Metric: Total Value (Glassmorphism/High-end UI approach) -->
+<div class="md:col-span-4 rounded-xl border border-outline-variant relative overflow-hidden flex flex-col justify-between p-gutter min-h-[160px]" data-alt="A sophisticated, abstract digital background featuring smooth, dark metallic surfaces with intersecting sharp geometric planes. The composition is illuminated by faint, cool blue edge-lighting, creating a sense of high-tech precision, deep data analytics, and corporate authority. The overall aesthetic is dark mode, minimalist, and highly structured." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCAeNzYQWOksODtFhB8Yh6yCE0aC_y-ExvoWA8WW57L16R-3SRgfpMr52kfoOjAKhcI1bsj3MdMOhM4RTjZLQnCjXPjdn4kL8SQXleZld3khUzH2OKRYt6GEpNBCYTTqZdewzzNSpqCuHrix7zeJPodU1ARYyhRR_P0oW8J4NrYG12xTW2dsoxQyp1hWyK-YZkjgFNR410vDbRRlmP7qXtyaXJEUAF6QNh0StORZAbwU69rPuHoot5VahTeCDYITdAo3TlvXyUo0cVJ'); background-size: cover; background-position: center;">
+<!-- Overlay for readability -->
+<div class="absolute inset-0 bg-surface-container-lowest/80 backdrop-blur-md"></div>
+<div class="relative z-10 flex justify-between items-start">
+<h3 class="font-label-caps text-label-caps text-on-surface uppercase tracking-wider">Toplam Stok Değeri</h3>
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+</div>
+<div class="relative z-10 mt-stack-md">
+<div class="font-display-lg text-display-lg text-primary tracking-tight">₺1.4M</div>
+<div class="flex items-center gap-1 mt-stack-xs text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-tertiary">trending_up</span>
+<span class="font-body-sm text-body-sm">+4.2% geçen aya göre</span>
+</div>
+</div>
+</div>
+<!-- Standard Metric 1 -->
+<div class="md:col-span-4 bg-surface-container rounded-xl border border-outline-variant p-gutter flex flex-col justify-between min-h-[160px]">
+<div class="flex justify-between items-start">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Kritik Stok Uyarısı</h3>
+<span class="material-symbols-outlined text-error">warning</span>
+</div>
+<div class="mt-stack-md">
+<div class="font-display-lg text-display-lg text-error tracking-tight">12</div>
+<div class="flex items-center gap-1 mt-stack-xs text-on-surface-variant">
+<span class="font-body-sm text-body-sm">SKU tükenme sınırında</span>
+</div>
+</div>
+</div>
+<!-- Standard Metric 2 -->
+<div class="md:col-span-4 bg-surface-container rounded-xl border border-outline-variant p-gutter flex flex-col justify-between min-h-[160px]">
+<div class="flex justify-between items-start">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Aylık Tüketim Hızı</h3>
+<span class="material-symbols-outlined text-secondary">speed</span>
+</div>
+<div class="mt-stack-md">
+<div class="font-display-lg text-display-lg text-on-surface tracking-tight">85%</div>
+<div class="flex items-center gap-1 mt-stack-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">horizontal_rule</span>
+<span class="font-body-sm text-body-sm">Stabil operasyon</span>
+</div>
+</div>
+</div>
+<!-- Row 2: Distribution and Depleted -->
+<!-- Stock Distribution (Bar Charts) -->
+<div class="md:col-span-8 bg-surface-container rounded-xl border border-outline-variant p-gutter">
+<div class="flex justify-between items-center mb-stack-lg">
+<h3 class="font-h2 text-h2 text-on-background">Kategori Bazlı Dağılım</h3>
+<button class="text-primary hover:text-primary-fixed-dim transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex flex-col gap-stack-md">
+<!-- Category 1 -->
+<div>
+<div class="flex justify-between items-end mb-stack-xs">
+<span class="font-body-md text-body-md text-on-surface">Elektronik Bileşenler</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant">45%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 45%;"></div>
+</div>
+</div>
+<!-- Category 2 -->
+<div>
+<div class="flex justify-between items-end mb-stack-xs">
+<span class="font-body-md text-body-md text-on-surface">Mekanik Parçalar</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant">30%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 30%;"></div>
+</div>
+</div>
+<!-- Category 3 -->
+<div>
+<div class="flex justify-between items-end mb-stack-xs">
+<span class="font-body-md text-body-md text-on-surface">Sarf Malzemeleri</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant">15%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary" style="width: 15%;"></div>
+</div>
+</div>
+<!-- Category 4 -->
+<div>
+<div class="flex justify-between items-end mb-stack-xs">
+<span class="font-body-md text-body-md text-on-surface">Ambalaj</span>
+<span class="font-mono-data text-mono-data text-on-surface-variant">10%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-outline-variant" style="width: 10%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Most Depleted (List) -->
+<div class="md:col-span-4 bg-surface-container rounded-xl border border-outline-variant p-gutter flex flex-col">
+<h3 class="font-h2 text-h2 text-on-background mb-stack-lg">Riskli Kalemler</h3>
+<div class="flex flex-col gap-0 flex-grow">
+<!-- Item 1 -->
+<div class="flex items-center justify-between py-stack-sm border-b border-outline-variant border-opacity-50">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[18px]">memory</span>
+</div>
+<div>
+<div class="font-body-md text-body-md text-on-surface">Mikroçip STM32</div>
+<div class="font-mono-data text-mono-data text-on-surface-variant text-[12px]">SKU-9921</div>
+</div>
+</div>
+<span class="bg-error-container text-on-error-container font-label-caps text-label-caps px-2 py-1 rounded">2 ADET</span>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between py-stack-sm border-b border-outline-variant border-opacity-50">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]">cable</span>
+</div>
+<div>
+<div class="font-body-md text-body-md text-on-surface">Optik Kablo 5m</div>
+<div class="font-mono-data text-mono-data text-on-surface-variant text-[12px]">SKU-4410</div>
+</div>
+</div>
+<span class="bg-tertiary-container text-on-tertiary-container font-label-caps text-label-caps px-2 py-1 rounded">14 ADET</span>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between py-stack-sm">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">battery_charging_full</span>
+</div>
+<div>
+<div class="font-body-md text-body-md text-on-surface">Lityum Hücre B</div>
+<div class="font-mono-data text-mono-data text-on-surface-variant text-[12px]">SKU-1022</div>
+</div>
+</div>
+<span class="bg-surface-variant text-on-surface font-label-caps text-label-caps px-2 py-1 rounded">28 ADET</span>
+</div>
+</div>
+</div>
+<!-- Row 3: Shopping Trends (Pseudo Bar Chart) -->
+<div class="md:col-span-12 bg-surface-container rounded-xl border border-outline-variant p-gutter">
+<div class="flex justify-between items-center mb-stack-lg">
+<h3 class="font-h2 text-h2 text-on-background">Alım Hacmi Trendi (Son 7 Gün)</h3>
+<div class="flex gap-2">
+<span class="flex items-center gap-1 font-label-caps text-label-caps text-on-surface-variant">
+<div class="w-2 h-2 rounded-full bg-primary"></div> Gelen
+                        </span>
+<span class="flex items-center gap-1 font-label-caps text-label-caps text-on-surface-variant">
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div> Çıkan
+                        </span>
+</div>
+</div>
+<!-- CSS Based Bar Chart Area -->
+<div class="h-48 w-full flex items-end justify-between gap-2 md:gap-4 mt-stack-md pt-stack-md border-t border-outline-variant border-opacity-30">
+<!-- Day 1 -->
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full flex justify-center items-end gap-1 h-32 relative">
+<div class="w-1/2 bg-surface-container-highest rounded-t-sm transition-all group-hover:bg-outline-variant" style="height: 40%;"></div>
+<div class="w-1/2 bg-primary rounded-t-sm transition-all group-hover:bg-primary-fixed" style="height: 60%;"></div>
+</div>
+<span class="font-mono-data text-mono-data text-on-surface-variant text-[10px] uppercase">Pzt</span>
+</div>
+<!-- Day 2 -->
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full flex justify-center items-end gap-1 h-32 relative">
+<div class="w-1/2 bg-surface-container-highest rounded-t-sm transition-all group-hover:bg-outline-variant" style="height: 55%;"></div>
+<div class="w-1/2 bg-primary rounded-t-sm transition-all group-hover:bg-primary-fixed" style="height: 30%;"></div>
+</div>
+<span class="font-mono-data text-mono-data text-on-surface-variant text-[10px] uppercase">Sal</span>
+</div>
+<!-- Day 3 -->
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full flex justify-center items-end gap-1 h-32 relative">
+<div class="w-1/2 bg-surface-container-highest rounded-t-sm transition-all group-hover:bg-outline-variant" style="height: 30%;"></div>
+<div class="w-1/2 bg-primary rounded-t-sm transition-all group-hover:bg-primary-fixed" style="height: 85%;"></div>
+</div>
+<span class="font-mono-data text-mono-data text-on-surface-variant text-[10px] uppercase">Çar</span>
+</div>
+<!-- Day 4 -->
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full flex justify-center items-end gap-1 h-32 relative">
+<div class="w-1/2 bg-surface-container-highest rounded-t-sm transition-all group-hover:bg-outline-variant" style="height: 70%;"></div>
+<div class="w-1/2 bg-primary rounded-t-sm transition-all group-hover:bg-primary-fixed" style="height: 45%;"></div>
+</div>
+<span class="font-mono-data text-mono-data text-on-surface-variant text-[10px] uppercase">Per</span>
+</div>
+<!-- Day 5 -->
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full flex justify-center items-end gap-1 h-32 relative">
+<div class="w-1/2 bg-surface-container-highest rounded-t-sm transition-all group-hover:bg-outline-variant" style="height: 20%;"></div>
+<div class="w-1/2 bg-primary rounded-t-sm transition-all group-hover:bg-primary-fixed" style="height: 50%;"></div>
+</div>
+<span class="font-mono-data text-mono-data text-on-surface-variant text-[10px] uppercase">Cum</span>
+</div>
+<!-- Day 6 -->
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full flex justify-center items-end gap-1 h-32 relative">
+<div class="w-1/2 bg-surface-container-highest rounded-t-sm transition-all group-hover:bg-outline-variant" style="height: 15%;"></div>
+<div class="w-1/2 bg-primary rounded-t-sm transition-all group-hover:bg-primary-fixed" style="height: 10%;"></div>
+</div>
+<span class="font-mono-data text-mono-data text-on-surface-variant text-[10px] uppercase">Cmt</span>
+</div>
+<!-- Day 7 -->
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full flex justify-center items-end gap-1 h-32 relative">
+<div class="w-1/2 bg-surface-container-highest rounded-t-sm transition-all group-hover:bg-outline-variant" style="height: 10%;"></div>
+<div class="w-1/2 bg-primary rounded-t-sm transition-all group-hover:bg-primary-fixed" style="height: 20%;"></div>
+</div>
+<span class="font-mono-data text-mono-data text-on-surface-variant text-[10px] uppercase">Paz</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

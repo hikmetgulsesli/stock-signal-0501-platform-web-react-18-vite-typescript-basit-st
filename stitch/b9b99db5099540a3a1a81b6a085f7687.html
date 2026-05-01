@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ayarlar - Stok Takip</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#0c0e16",
+                        "inverse-primary": "#0053db",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#d4e4fa",
+                        "on-tertiary-container": "#ffede6",
+                        "inverse-on-surface": "#2e3039",
+                        "surface-tint": "#b4c5ff",
+                        "outline": "#8d90a0",
+                        "on-secondary-fixed": "#0d1c2d",
+                        "outline-variant": "#434655",
+                        "surface-variant": "#32343d",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-background": "#e1e2ed",
+                        "on-tertiary": "#581e00",
+                        "on-primary-container": "#eeefff",
+                        "background": "#11131b",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-bright": "#373942",
+                        "surface": "#11131b",
+                        "surface-dim": "#11131b",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "tertiary-container": "#bc4800",
+                        "inverse-surface": "#e1e2ed",
+                        "secondary": "#b9c8de",
+                        "primary-container": "#2563eb",
+                        "tertiary": "#ffb596",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-surface": "#e1e2ed",
+                        "on-primary": "#002a78",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "primary": "#b4c5ff",
+                        "surface-container": "#1d1f27",
+                        "primary-fixed": "#dbe1ff",
+                        "on-surface-variant": "#c3c6d7",
+                        "on-secondary-container": "#a7b6cc",
+                        "surface-container-high": "#282a32",
+                        "on-secondary": "#233143",
+                        "secondary-fixed-dim": "#b9c8de",
+                        "surface-container-highest": "#32343d",
+                        "on-primary-fixed": "#00174b",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#39485a",
+                        "secondary-container": "#39485a",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#191b23"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "stack-sm": "8px",
+                        "gutter": "16px",
+                        "stack-md": "16px",
+                        "container-margin": "24px",
+                        "stack-lg": "24px",
+                        "stack-xl": "40px",
+                        "stack-xs": "4px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Inter", "sans-serif"],
+                        "mono-data": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
+                        "body-sm": ["Inter", "sans-serif"],
+                        "display-lg": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "label-caps": ["Inter", "sans-serif"],
+                        "h1": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "h2": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "mono-data": ["14px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h1": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md antialiased flex">
+<!-- JSON Component: SideNavBar -->
+<nav class="bg-slate-800 dark:bg-slate-800 font-inter text-sm antialiased docked h-full border-r border-slate-700 shadow-none fixed left-0 top-0 bottom-0 w-64 z-50 flex flex-col py-6">
+<div class="px-6 mb-8">
+<h1 class="text-xl font-black text-blue-500">Hassasiyet</h1>
+<p class="text-slate-400 text-xs mt-1">Kurumsal Takip</p>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<a class="text-slate-400 flex items-center px-4 py-3 gap-3 transition-all duration-200 ease-in-out hover:bg-slate-700/50 hover:text-slate-100" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Panel
+            </a>
+<a class="text-slate-400 flex items-center px-4 py-3 gap-3 transition-all duration-200 ease-in-out hover:bg-slate-700/50 hover:text-slate-100" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                Stoklar
+            </a>
+<a class="text-slate-400 flex items-center px-4 py-3 gap-3 transition-all duration-200 ease-in-out hover:bg-slate-700/50 hover:text-slate-100" href="#">
+<span class="material-symbols-outlined">insights</span>
+                İçgörüler
+            </a>
+<a class="bg-blue-600/10 text-blue-500 border-r-2 border-blue-500 flex items-center px-4 py-3 gap-3 transition-all duration-200 ease-in-out hover:bg-slate-700/50 hover:text-slate-100" href="#">
+<span class="material-symbols-outlined filled" style="font-variation-settings: 'FILL' 1;">settings</span>
+                Ayarlar
+            </a>
+<a class="text-slate-400 flex items-center px-4 py-3 gap-3 transition-all duration-200 ease-in-out hover:bg-slate-700/50 hover:text-slate-100" href="#">
+<span class="material-symbols-outlined">person</span>
+                Profil
+            </a>
+</div>
+</nav>
+<!-- Main Content Wrapper to offset SideNavBar -->
+<div class="flex-1 ml-64 flex flex-col min-h-screen">
+<!-- JSON Component: TopNavBar -->
+<header class="bg-slate-800 dark:bg-slate-800/80 font-inter text-sm font-medium docked full-width top-0 border-b border-slate-700 shadow-none backdrop-blur-md transition-colors duration-200 fixed top-0 right-0 left-64 z-40 flex justify-between items-center px-6 h-16">
+<div class="flex items-center gap-4">
+<div class="text-lg font-bold text-slate-50 tracking-tight">Stok Takip</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-400 hover:bg-slate-700/50 hover:text-slate-50 p-2 rounded-full transition-colors duration-200 flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-slate-400 hover:bg-slate-700/50 hover:text-slate-50 p-2 rounded-full transition-colors duration-200 flex items-center justify-center">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Page Canvas -->
+<main class="flex-1 pt-24 px-container-margin pb-stack-xl max-w-7xl mx-auto w-full">
+<header class="mb-stack-xl">
+<h2 class="font-h1 text-h1 text-on-surface">Ayarlar</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-stack-xs">Uygulama tercihlerinizi, bildirim eşiklerini ve sistem verilerini yönetin.</p>
+</header>
+<!-- Bento Grid Layout for Settings -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Uygulama Tercihleri -->
+<section class="col-span-1 md:col-span-7 bg-surface-container border border-outline-variant rounded-lg p-stack-lg flex flex-col gap-stack-md">
+<div class="flex items-center gap-2 mb-stack-sm text-on-surface">
+<span class="material-symbols-outlined text-primary">tune</span>
+<h3 class="font-h2 text-h2 text-on-surface">Uygulama Tercihleri</h3>
+</div>
+<div class="flex items-center justify-between py-stack-sm border-b border-outline-variant/50">
+<div>
+<p class="font-body-md text-body-md text-on-surface">Gerçek Zamanlı Veri Akışı</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Stok ve fiyat güncellemelerini anında yansıt.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary-container rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-primary-container after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="flex items-center justify-between py-stack-sm border-b border-outline-variant/50">
+<div>
+<p class="font-body-md text-body-md text-on-surface">Kompakt Görünüm</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tablolarda daha fazla veri göstermek için satır yüksekliğini daralt.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary-container rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-primary-container after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</section>
+<!-- Tema Ayarları -->
+<section class="col-span-1 md:col-span-5 bg-surface-container border border-outline-variant rounded-lg p-stack-lg flex flex-col gap-stack-md">
+<div class="flex items-center gap-2 mb-stack-sm text-on-surface">
+<span class="material-symbols-outlined text-primary">dark_mode</span>
+<h3 class="font-h2 text-h2 text-on-surface">Tema Ayarları</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-stack-xs">Arayüz görünüm tercihiniz. Yüksek kontrastlı hassas takip için koyu tema önerilir.</p>
+<div class="grid grid-cols-2 gap-stack-sm mt-auto">
+<button class="bg-primary-container text-on-primary-container font-body-sm font-medium py-2 px-4 rounded border border-primary-container flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined filled" style="font-variation-settings: 'FILL' 1;">dark_mode</span>
+                            Koyu Tema
+                        </button>
+<button class="bg-surface-container-lowest text-on-surface-variant font-body-sm font-medium py-2 px-4 rounded border border-outline-variant hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">light_mode</span>
+                            Açık Tema
+                        </button>
+</div>
+</section>
+<!-- Bildirim Eşikleri -->
+<section class="col-span-1 md:col-span-7 bg-surface-container border border-outline-variant rounded-lg p-stack-lg flex flex-col gap-stack-md">
+<div class="flex items-center gap-2 mb-stack-sm text-on-surface">
+<span class="material-symbols-outlined text-primary">notifications_active</span>
+<h3 class="font-h2 text-h2 text-on-surface">Bildirim Eşikleri</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div class="flex flex-col gap-stack-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Stok Azalma Sınırı (Adet)</label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 text-on-surface font-mono-data focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors w-full" type="number" value="50"/>
+<span class="font-body-sm text-body-sm text-on-surface-variant opacity-70">Bu değerin altına düşüldüğünde uyarı verilir.</span>
+</div>
+<div class="flex flex-col gap-stack-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Fiyat Düşüş Uyarı Yüzdesi (%)</label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 text-on-surface font-mono-data focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors w-full" type="number" value="5"/>
+<span class="font-body-sm text-body-sm text-on-surface-variant opacity-70">Maliyetin altına düşüşlerdeki tolerans sınırı.</span>
+</div>
+</div>
+<div class="mt-stack-sm flex justify-end">
+<button class="bg-surface-variant text-on-surface py-2 px-6 rounded font-body-sm font-medium hover:bg-outline-variant transition-colors">Değişiklikleri Kaydet</button>
+</div>
+</section>
+<!-- Veri Yönetimi -->
+<section class="col-span-1 md:col-span-5 bg-surface-container border border-error/20 rounded-lg p-stack-lg flex flex-col gap-stack-md relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-error-container"></div>
+<div class="flex items-center gap-2 mb-stack-sm text-on-surface">
+<span class="material-symbols-outlined text-error">database</span>
+<h3 class="font-h2 text-h2 text-on-surface">Veri Yönetimi</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Tarayıcı önbelleğinde saklanan yerel tercihleri ve geçici oturum verilerini temizler. Bu işlem uygulama performansını sıfırlayabilir.
+                    </p>
+<div class="mt-auto pt-stack-md">
+<button class="bg-error-container text-on-error-container font-body-sm font-medium py-2 px-4 rounded border border-error-container hover:bg-error hover:text-on-error transition-colors w-full flex justify-center items-center gap-2">
+<span class="material-symbols-outlined">delete_sweep</span>
+                            localStorage Temizle
+                        </button>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ürün Ekle - Stok Takip</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#0c0e16",
+                        "inverse-primary": "#0053db",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#d4e4fa",
+                        "on-tertiary-container": "#ffede6",
+                        "inverse-on-surface": "#2e3039",
+                        "surface-tint": "#b4c5ff",
+                        "outline": "#8d90a0",
+                        "on-secondary-fixed": "#0d1c2d",
+                        "outline-variant": "#434655",
+                        "surface-variant": "#32343d",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-background": "#e1e2ed",
+                        "on-tertiary": "#581e00",
+                        "on-primary-container": "#eeefff",
+                        "background": "#11131b",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-bright": "#373942",
+                        "surface": "#11131b",
+                        "surface-dim": "#11131b",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "tertiary-container": "#bc4800",
+                        "inverse-surface": "#e1e2ed",
+                        "secondary": "#b9c8de",
+                        "primary-container": "#2563eb",
+                        "tertiary": "#ffb596",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-surface": "#e1e2ed",
+                        "on-primary": "#002a78",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "primary": "#b4c5ff",
+                        "surface-container": "#1d1f27",
+                        "primary-fixed": "#dbe1ff",
+                        "on-surface-variant": "#c3c6d7",
+                        "on-secondary-container": "#a7b6cc",
+                        "surface-container-high": "#282a32",
+                        "on-secondary": "#233143",
+                        "secondary-fixed-dim": "#b9c8de",
+                        "surface-container-highest": "#32343d",
+                        "on-primary-fixed": "#00174b",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#39485a",
+                        "secondary-container": "#39485a",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#191b23"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "stack-sm": "8px",
+                        "gutter": "16px",
+                        "stack-md": "16px",
+                        "container-margin": "24px",
+                        "stack-lg": "24px",
+                        "stack-xl": "40px",
+                        "stack-xs": "4px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Inter"],
+                        "mono-data": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "h1": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h2": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "mono-data": ["14px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h1": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen p-container-margin flex justify-center items-start pt-stack-xl antialiased">
+<!-- Main Container -->
+<main class="w-full max-w-3xl flex flex-col gap-stack-lg">
+<!-- Header & Navigation (Task-Focused: Only Back Action) -->
+<header class="flex flex-col gap-stack-sm">
+<button aria-label="Geri Dön" class="w-fit flex items-center gap-stack-xs px-2 py-1 -ml-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-background">
+<span aria-hidden="true" class="material-symbols-outlined text-[20px]" data-icon="arrow_back">arrow_back</span>
+<span class="font-body-md text-body-md">Geri</span>
+</button>
+<h1 class="font-h1 text-h1 text-on-surface">Yeni Ürün Ekle</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Envantere yeni bir ürün kaydı oluşturun. Gerekli tüm alanları doldurduğunuzdan emin olun.</p>
+</header>
+<!-- Form Card -->
+<form class="bg-surface-container border border-outline-variant rounded-lg p-container-margin flex flex-col gap-stack-lg shadow-sm">
+<!-- Grid Layout for Fields -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Ürün Adı -->
+<div class="flex flex-col gap-stack-xs md:col-span-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider" for="product_name">
+                        Ürün Adı <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container focus:ring-opacity-50 transition-all" id="product_name" name="product_name" placeholder="Örn: Sensör Modülü X-200" required="" type="text"/>
+</div>
+<!-- Kategori -->
+<div class="flex flex-col gap-stack-xs md:col-span-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider" for="category">
+                        Kategori <span class="text-error">*</span>
+</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container focus:ring-opacity-50 transition-all cursor-pointer" id="category" name="category" required="">
+<option disabled="" selected="" value="">Kategori Seçiniz</option>
+<option value="electronics">Elektronik Bileşenler</option>
+<option value="hardware">Donanım &amp; Mekanik</option>
+<option value="consumables">Sarf Malzemeleri</option>
+<option value="software">Yazılım Lisansları</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Stok Miktarı (With Validation Error Example) -->
+<div class="flex flex-col gap-stack-xs">
+<label class="font-label-caps text-label-caps text-error uppercase tracking-wider" for="stock_quantity">
+                        Stok Miktarı <span class="text-error">*</span>
+</label>
+<input aria-describedby="stock_error" aria-invalid="true" class="w-full bg-surface-container-lowest border border-error rounded-lg px-3 py-2 font-mono-data text-mono-data text-on-surface placeholder:text-outline focus:outline-none focus:border-error focus:ring-2 focus:ring-error focus:ring-opacity-50 transition-all" id="stock_quantity" name="stock_quantity" placeholder="0" required="" type="number" value="-5"/>
+<div class="flex items-center gap-1 text-error mt-1" id="stock_error">
+<span class="material-symbols-outlined text-[16px]" data-icon="error">error</span>
+<span class="font-body-sm text-body-sm">Stok miktarı 0'dan küçük olamaz.</span>
+</div>
+</div>
+<!-- Minimum Eşik -->
+<div class="flex flex-col gap-stack-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider" for="min_threshold">
+                        Minimum Eşik
+                    </label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 font-mono-data text-mono-data text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container focus:ring-opacity-50 transition-all" id="min_threshold" min="0" name="min_threshold" placeholder="10" type="number"/>
+<div class="flex items-center gap-1 text-on-surface-variant mt-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="info">info</span>
+<span class="font-body-sm text-body-sm">Uyarı tetikleme seviyesi.</span>
+</div>
+</div>
+<!-- Açıklama -->
+<div class="flex flex-col gap-stack-xs md:col-span-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider" for="description">
+                        Açıklama
+                    </label>
+<textarea class="w-full resize-y bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container focus:ring-opacity-50 transition-all" id="description" name="description" placeholder="Ürün özelliklerini ve depo konumunu belirtebilirsiniz..." rows="4"></textarea>
+</div>
+</div>
+<!-- Divider -->
+<hr class="border-outline-variant w-full my-2"/>
+<!-- Form Actions -->
+<div class="flex items-center justify-end gap-stack-md">
+<button class="px-4 py-2 bg-surface-variant text-on-surface font-body-md text-body-md rounded-lg hover:bg-surface-bright transition-colors focus:outline-none focus:ring-2 focus:ring-outline focus:ring-offset-2 focus:ring-offset-surface-container border border-outline-variant" type="button">
+                    İptal
+                </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary-container text-on-primary-container font-body-md text-body-md rounded-lg hover:bg-inverse-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-surface-container shadow-sm" type="submit">
+<span class="material-symbols-outlined text-[20px]" data-icon="save">save</span>
+                    Kaydet
+                </button>
+</div>
+</form>
+</main>
+</body></html>
